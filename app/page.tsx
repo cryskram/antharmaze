@@ -139,8 +139,13 @@ export default function Home() {
           />
           <Image src="/utsav.png" width={150} height={150} alt="utsav logo" />
         </div>
-        <h1
+        {/* <h1
           className={`${ananda.className} text-5xl md:text-7xl mt-8 bg-clip-text text-transparent bg-gradient-to-r from-[#a0c4ff] via-[#bdb2ff] to-[#ffc6ff] tracking-wider`}
+        >
+          Anthar Maze
+        </h1> */}
+        <h1
+          className={`${ananda.className} text-5xl md:text-7xl mt-8 text-white`}
         >
           Anthar Maze
         </h1>
