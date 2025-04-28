@@ -129,7 +129,7 @@ export default function Home() {
   return (
     <div className="flex w-full min-h-screen items-center justify-center px-4 bg-[url('/space.jpeg')] relative">
       <div className="bg-black absolute inset-0 opacity-55"></div>
-      <div className="flex flex-col items-center py-20 z-0">
+      <div className="flex flex-col items-center py-10 z-0">
         <div className="flex items-center justify-center gap-4">
           <Image
             src="/bmsce-ieee-cs.png"
@@ -140,7 +140,7 @@ export default function Home() {
           <Image src="/utsav.png" width={150} height={150} alt="utsav logo" />
         </div>
         <h1
-          className={`${ananda.className} text-2xl md:text-7xl mt-8 bg-clip-text text-transparent bg-gradient-to-r from-[#a0c4ff] via-[#bdb2ff] to-[#ffc6ff] tracking-wider`}
+          className={`${ananda.className} text-5xl md:text-7xl mt-8 bg-clip-text text-transparent bg-gradient-to-r from-[#a0c4ff] via-[#bdb2ff] to-[#ffc6ff] tracking-wider`}
         >
           Anthar Maze
         </h1>
