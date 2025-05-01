@@ -10,6 +10,7 @@ export default function Home() {
   const [answer, setAnswer] = useState("");
   const [name, setName] = useState("");
   const [late, setLate] = useState(false);
+  const [isRedBull, setIsRedbull] = useState(false);
   const [success, setSuccess] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -37,6 +38,7 @@ export default function Home() {
           setSuccess("Too late to claim the Treasure. Better luck next time!");
         } else {
           setLate(false);
+
           const res = await axios.post("/api/answer", {
             name: name,
             clue: codes[0]["text"] as string,
@@ -47,6 +49,15 @@ export default function Home() {
             throw new Error("Error");
           }
           setSuccess(codes[0]["text"] as string);
+        }
+
+        const getWinners = await axios.get("/api/winners");
+        const winners = getWinners.data;
+
+        if (winners.length <= 7) {
+          setIsRedbull(true);
+        } else {
+          setIsRedbull(false);
         }
       } catch (e: unknown) {
         if (e instanceof Error) {
@@ -81,9 +92,21 @@ export default function Home() {
               Take the code and run to venue!
             </p>
           )}
-          <p className="font-bold mt-4 text-center text-4xl bg-[#E7A223] p-4 rounded-xl">
-            {success}
-          </p>
+          <div>
+            <p className="font-bold mt-4 text-center text-4xl bg-[#E7A223] p-4 rounded-xl">
+              {success}
+              <br />
+            </p>
+            <p
+              className={`${ananda.className} text-4xl text-white text-center mt-4`}
+            >
+              {isRedBull && late
+                ? "Collect the Red Bull from CR"
+                : isRedBull && !late
+                ? "Dont forget to collect the Red Bull"
+                : "No Red Bull either"}
+            </p>
+          </div>
         </div>
       );
     }
@@ -127,8 +150,8 @@ export default function Home() {
   };
 
   return (
-    <div className="flex w-full min-h-screen items-center justify-center px-4 bg-[url('/space.jpeg')] relative">
-      <div className="bg-black absolute inset-0 opacity-55"></div>
+    <div className="flex w-full min-h-screen items-center justify-center px-4 bg-[url('/space.jpeg')] bg-center relative">
+      <div className="bg-black absolute inset-0 opacity-45"></div>
       <div className="flex flex-col items-center py-10 z-0">
         <div className="flex items-center justify-center gap-4">
           <Image
@@ -139,11 +162,6 @@ export default function Home() {
           />
           <Image src="/utsav.png" width={150} height={150} alt="utsav logo" />
         </div>
-        {/* <h1
-          className={`${ananda.className} text-5xl md:text-7xl mt-8 bg-clip-text text-transparent bg-gradient-to-r from-[#a0c4ff] via-[#bdb2ff] to-[#ffc6ff] tracking-wider`}
-        >
-          Anthar Maze
-        </h1> */}
         <h1
           className={`${ananda.className} text-5xl md:text-7xl mt-8 text-white`}
         >
