@@ -17,7 +17,9 @@ export default function Home() {
   const onSubmit = useCallback(async () => {
     if (
       answer.toLowerCase() === "control room" ||
-      answer.toLowerCase() === "cr"
+      answer.toLowerCase() === "cr" ||
+      answer.toLowerCase() === "utsav cr" ||
+      answer.toLowerCase() === "utsav control room"
     ) {
       setLoading(true);
       try {
@@ -129,6 +131,7 @@ export default function Home() {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             placeholder="Answer"
+            required
           />
           <input
             className="m-2 p-2 md:p-4 text-base md:text-xl bg-[#def4fe] rounded-xl placeholder:text-black/40 placeholder:font-semibold text-black outline-none"
@@ -137,6 +140,7 @@ export default function Home() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Team name"
+            required
           />
         </div>
         <button
