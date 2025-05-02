@@ -106,7 +106,7 @@ export default function Home() {
                 ? "Collect the Red Bull from CR"
                 : isRedBull && !late
                 ? "Dont forget to collect the Red Bull"
-                : "No Red Bull either"}
+                : "Missed red bull :("}
             </p>
           </div>
         </div>
